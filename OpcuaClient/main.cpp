@@ -4,6 +4,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <iostream>
+#include <windows.h>
 using namespace cv;
 using namespace std;
 
@@ -41,19 +42,14 @@ int main(int argc, char *argv[]) {
 		
 		Mat Main_frame;
 	    Main_frame.create(234, 263, CV_8UC1);
-		for (int i = 0; i < Main_frame.rows; i++)
-			for (int j = 0; j < Main_frame.cols; j++) {
-				Main_frame.data[(i*Main_frame.cols + j)] = int(p->x[(i*Main_frame.cols + j)]);
-			}
+		Main_frame.data = p->x;
 		
-		//imshow("www", Main_frame);
+
 		namedWindow("Display window", WINDOW_AUTOSIZE);
 		imshow("Display window", Main_frame);
-		//Mat img = imread("D://golfcar.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-		//imshow("weqw", img)
+
 		waitKey(1);
-		//img.create(263, 234, CV_8UC1,p->x);
-		//cout << p->x[2];
+
 	}
 
 	
